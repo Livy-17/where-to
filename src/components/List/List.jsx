@@ -1,11 +1,13 @@
 import React, { useState, useEffect, createRef } from 'react';
-import { Box, CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
+import { Button, Box, CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 import useStyles from './styles';
 import Details from '../Details/Details';
+import { useTheme } from '@mui/material';
 
 const List = ({ places, childClicked, isLoading, type, setType, rating, setRating }) => {
 
   const classes = useStyles();
+  const theme = useTheme();
 
   const [ elemRefs, setElemRefs ] = useState([]);
 
@@ -15,9 +17,14 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
 
   return ( 
     <div className={classes.container}>
-      <Typography variant='h5' className={classes.displayXs}>
-        Start exploring
-      </Typography>
+      <Box className={classes.displayXs} >
+        <Typography variant='h6'>
+          Start exploring
+        </Typography>
+        <Button size='small' variant='outlined' color='primary'>
+          Open Map
+        </Button> 
+      </Box>
       <Typography variant='h5' className={classes.displayLg}>
         Restaurants, Hotels and Attractions around you
       </Typography>
@@ -25,12 +32,12 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
         <div className={classes.loading}><CircularProgress size='5rem' /></div>
       ) : (
       <Box>
-        <Box m='20px 0 50px 0'>
+        <Box m='20px 0 40px 0'>
           <Grid container>
             <Grid item xs={12} lg={6} mb='10px'>
               <FormControl className={classes.select}>
                 <InputLabel>Type</InputLabel>
-                <Select value={type} onChange={ (e) => setType(e.target.value)} label='Type'>
+                <Select value={type} onChange={ (e) => setType(e.target.value)} label='Type' sx={{height: '5vh'}}>
                   <MenuItem value='restaurants'>Restaurants</MenuItem>
                   <MenuItem value='hotels' disabled>Hotels (API error)</MenuItem>
                   <MenuItem value='attractions'>Attractions</MenuItem>
@@ -40,7 +47,7 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
             <Grid item xs={12} lg={6}>
               <FormControl className={classes.select}>
                 <InputLabel>Rating</InputLabel>
-                <Select value={rating} onChange={ (e) => setRating(e.target.value)} label='Rating'>
+                <Select value={rating} onChange={ (e) => setRating(e.target.value)} label='Rating' sx={{height: '5vh'}}>
                   <MenuItem value={0}>All</MenuItem>
                   <MenuItem value={3}>About 3.0</MenuItem>
                   <MenuItem value={4}>About 4.0</MenuItem>

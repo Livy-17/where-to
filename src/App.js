@@ -73,7 +73,7 @@ function App() {
                 setRating={setRating}
               />
             </Grid>
-            <Grid item xs={12} lg={8}>
+            <Grid item xs={12} lg={8} sx={{ display: 'none', [theme.breakpoints.up('lg')]: { display: 'inherit' }}}>
               <Map
                setCoordinates={setCoordinates}
                setBounds={setBounds} 

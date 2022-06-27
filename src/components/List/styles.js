@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
     height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center',
   },
   container: {
-    padding: '25px',
+    padding: '25px 25px 10px 25px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -20,10 +20,12 @@ export default makeStyles((theme) => ({
     marginBottom: '30px',
   },
   list: {
-    height: '75vh', overflow: 'auto',
+    height: '65vh', overflow: 'auto',
   },
   displayXs: {
-    display: 'block',
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
     [theme.breakpoints.up('lg')]: {
       display: 'none'
     }
