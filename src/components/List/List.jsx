@@ -22,7 +22,7 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
           Start exploring
         </Typography>
       </Box>
-      <Typography variant='h5' className={classes.displayLg}>
+      <Typography variant='h5' className={classes.displayLg} sx={{fontFamily: 'Nonito'}}>
         Restaurants, Hotels and Attractions around you
       </Typography>
       {isLoading ? (

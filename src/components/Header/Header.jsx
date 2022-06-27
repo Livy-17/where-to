@@ -20,11 +20,11 @@ const Header = ({ setCoordinates, colorMode, mode, setMode }) => {
   return ( 
     <AppBar position='static'>
       <Toolbar className={classes.toolbar}>
-        <Typography variant='h5'>
+        <Typography variant='h5' sx={{fontFamily: 'Shadows Into Light'}}>
           WhereTo
         </Typography>
         <Box display='flex' alignItems='center'>
-          <Typography variant='h6' className={classes.displayLg}>
+          <Typography variant='h6' className={classes.displayLg} sx={{fontFamily: 'Dancing Script'}}>
             Find your destinations
           </Typography>
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged} >

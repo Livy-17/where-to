@@ -55,5 +55,5 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: '5px'
-  }
+  },
 }));
