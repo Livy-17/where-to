@@ -30,11 +30,11 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
       ) : (
       <Box>
         <Box m='20px 0 40px 0'>
-          <Grid container>
+          <Grid container >
             <Grid item xs={12} lg={6} mb='10px'>
               <FormControl className={classes.select}>
                 <InputLabel>Type</InputLabel>
-                <Select value={type} onChange={ (e) => setType(e.target.value)} label='Type' sx={{height: '5vh'}}>
+                <Select value={type} onChange={ (e) => setType(e.target.value)} label='Type' sx={{height: '40px'}}>
                   <MenuItem value='restaurants'>Restaurants</MenuItem>
                   <MenuItem value='hotels' disabled>Hotels (API error)</MenuItem>
                   <MenuItem value='attractions'>Attractions</MenuItem>
@@ -44,7 +44,7 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
             <Grid item xs={12} lg={6}>
               <FormControl className={classes.select}>
                 <InputLabel>Rating</InputLabel>
-                <Select value={rating} onChange={ (e) => setRating(e.target.value)} label='Rating' sx={{height: '5vh'}}>
+                <Select value={rating} onChange={ (e) => setRating(e.target.value)} label='Rating' sx={{height: '40px'}}>
                   <MenuItem value={0}>All</MenuItem>
                   <MenuItem value={3}>About 3.0</MenuItem>
                   <MenuItem value={4}>About 4.0</MenuItem>
@@ -54,17 +54,19 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
             </Grid>
           </Grid>
         </Box>
-        <Grid container spacing={3} className={classes.list}>
-          {places?.map((place, i) => (
-            <Grid item ref={elemRefs[i]} key={i} xs={12} >
-              <Details
-                place={place}
-                selected={Number(childClicked) === i}
-                refProp={elemRefs[i]}
-              />
-            </Grid>
-          ))}
-        </Grid>
+        <Box className={classes.listContainer}>
+          <Grid container spacing={3} className={classes.list}>
+            {places?.map((place, i) => (
+              <Grid item ref={elemRefs[i]} key={i} xs={12} >
+                <Details
+                  place={place}
+                  selected={Number(childClicked) === i}
+                  refProp={elemRefs[i]}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
       )}
     </div>

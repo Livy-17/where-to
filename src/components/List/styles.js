@@ -22,6 +22,10 @@ export default makeStyles((theme) => ({
   list: {
     height: '65vh', overflow: 'auto',
   },
+  listContainer: {
+    width: '75vw',
+    [theme.breakpoints.up('lg')]: { width: 'auto' }
+  },
   displayXs: {
     display: 'flex',
     justifyContent: 'space-between',
