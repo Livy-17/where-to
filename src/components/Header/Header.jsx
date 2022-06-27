@@ -4,7 +4,7 @@ import { AppBar,Toolbar, Typography, InputBase, Box } from '@mui/material';
 import { Search, LightMode, DarkMode } from '@mui/icons-material';
 import useStyles from './styles';
 
-const Header = ({ setCoordinates, colorMode, isDark, setIsDark }) => {
+const Header = ({ setCoordinates, colorMode, mode, setMode }) => {
   
   const classes = useStyles();
 
@@ -35,7 +35,7 @@ const Header = ({ setCoordinates, colorMode, isDark, setIsDark }) => {
                 <InputBase placeholder='Search...' className={classes.searchInput} />
              </div>
           </Autocomplete>
-          {isDark ? 
+          {mode === 'dark' ? 
             <Box className={classes.sunIcon} onClick={colorMode.toggleColorMode}><LightMode/></Box>
             : 
             <Box className={classes.moonIcon} onClick={colorMode.toggleColorMode}><DarkMode/></Box>

@@ -3,23 +3,15 @@ import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
 import Footer from './components/Footer/Footer';
-import { Button, createTheme, useTheme, ThemeProvider, Box, CssBaseline, Grid } from "@mui/material";
+import { useMediaQuery, createTheme, useTheme, ThemeProvider, Box, CssBaseline, Grid } from "@mui/material";
 import { getPlacesData, getWeatherData } from './api';
 
 function App() {
 
   const theme = useTheme();
 
-  const [mode, setMode] = useState('light');
-  const [isDark, setIsDark] = useState(false);
-  const colorMode = useMemo(
-    () => ({
-            toggleColorMode: () => {
-              setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-              setIsDark(prev => !prev);
-            }
-          }), []
-  );
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [mode, setMode] = useState(prefersDarkMode ? 'dark' : 'light');
   const colorTheme = useMemo(
     () => 
     createTheme({
@@ -27,6 +19,13 @@ function App() {
         mode
       }
     }), [mode]
+  );
+  const colorMode = useMemo(
+    () => ({
+            toggleColorMode: () => {
+              setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+            }
+          }), []
   );
 
   const [places, setPlaces] = useState([]);
@@ -83,8 +82,8 @@ function App() {
             <Header
             setCoordinates={setCoordinates}
             colorMode={colorMode}
-            isDark={isDark}
-            setIsDark={setIsDark}
+            mode={mode}
+            setMode={setMode}
             />
             <Grid container spacing={3} sx={{width: "100%"}}>
               <Grid item xs={12} lg={4}>
@@ -106,6 +105,7 @@ function App() {
                 places={filteredPlaces.length ? filteredPlaces : places}
                 setChildClicked={setChildClicked}
                 weatherData={weatherData}
+                mode={mode}
                 />
               </Grid>
             </Grid>

@@ -3,10 +3,10 @@ import GoogleMapReact from 'google-map-react';
 import { useMediaQuery } from '@mui/material';
 import useStyles from './styles';
 import Marker from './Marker';
-import { MapStyles } from './MapStyles';
+import { MapStyleLight, MapStyleDark } from './MapStyles';
 import WeatherMarker from './WeatherMarker';
 
-const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, weatherData }) => {
+const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, weatherData, mode }) => {
 
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width:600px)');
@@ -19,7 +19,7 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
         center={Object.keys(coordinates).length ? coordinates : { lat: 51.5072, lng: 0.1276 }}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
-        options={{ disableDefaultUI: true, zoomControl: true, styles: MapStyles }}
+        options={{ disableDefaultUI: true, zoomControl: true, styles: mode === 'light' ? MapStyleLight : MapStyleDark }}
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw});
