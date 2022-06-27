@@ -50,7 +50,7 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
             </Grid>
           </Grid>
         </Box>
-        <Grid container spacing={3} className={classes.list} width='85vw'>
+        <Grid container spacing={3} className={classes.list}>
           {places?.map((place, i) => (
             <Grid item ref={elemRefs[i]} key={i} xs={12} >
               <Details
