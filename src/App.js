@@ -1,14 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
 import Footer from './components/Footer/Footer';
-import { useTheme, ThemeProvider, Box, CssBaseline, Grid } from "@mui/material";
+import { Button, createTheme, useTheme, ThemeProvider, Box, CssBaseline, Grid } from "@mui/material";
 import { getPlacesData, getWeatherData } from './api';
 
 function App() {
 
   const theme = useTheme();
+
+  const [mode, setMode] = useState('light');
+  const [isDark, setIsDark] = useState(false);
+  const colorMode = useMemo(
+    () => ({
+            toggleColorMode: () => {
+              setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+              setIsDark(prev => !prev);
+            }
+          }), []
+  );
+  const colorTheme = useMemo(
+    () => 
+    createTheme({
+      palette: {
+        mode
+      }
+    }), [mode]
+  );
 
   const [places, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({});
@@ -58,34 +77,41 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
-          <Header setCoordinates={setCoordinates} />
-          <Grid container spacing={3} sx={{width: "100%"}}>
-            <Grid item xs={12} lg={4}>
-              <List
+        <ThemeProvider theme={colorTheme}>
+          <CssBaseline />
+          <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
+            <Header
+            setCoordinates={setCoordinates}
+            colorMode={colorMode}
+            isDark={isDark}
+            setIsDark={setIsDark}
+            />
+            <Grid container spacing={3} sx={{width: "100%"}}>
+              <Grid item xs={12} lg={4}>
+                <List
+                  places={filteredPlaces.length ? filteredPlaces : places}
+                  childClicked={childClicked}
+                  isLoading={isLoading}
+                  type={type}
+                  setType={setType}
+                  rating={rating}
+                  setRating={setRating}
+                />
+              </Grid>
+              <Grid item xs={12} lg={8} >
+                <Map
+                setCoordinates={setCoordinates}
+                setBounds={setBounds} 
+                coordinates={coordinates}
                 places={filteredPlaces.length ? filteredPlaces : places}
-                childClicked={childClicked}
-                isLoading={isLoading}
-                type={type}
-                setType={setType}
-                rating={rating}
-                setRating={setRating}
-              />
+                setChildClicked={setChildClicked}
+                weatherData={weatherData}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} lg={8} >
-              <Map
-               setCoordinates={setCoordinates}
-               setBounds={setBounds} 
-               coordinates={coordinates}
-               places={filteredPlaces.length ? filteredPlaces : places}
-               setChildClicked={setChildClicked}
-               weatherData={weatherData}
-               />
-            </Grid>
-          </Grid>
-          <Footer />
-        </Box>
+            <Footer />
+          </Box>
+        </ThemeProvider>
       </ThemeProvider>
     </div>
   );

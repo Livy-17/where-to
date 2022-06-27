@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 import { AppBar,Toolbar, Typography, InputBase, Box } from '@mui/material';
-import { Search } from '@mui/icons-material';
+import { Search, LightMode, DarkMode } from '@mui/icons-material';
 import useStyles from './styles';
 
-const Header = ({ setCoordinates }) => {
+const Header = ({ setCoordinates, colorMode, isDark, setIsDark }) => {
   
   const classes = useStyles();
 
@@ -23,7 +23,7 @@ const Header = ({ setCoordinates }) => {
         <Typography variant='h5'>
           WhereTo
         </Typography>
-        <Box display='flex'>
+        <Box display='flex' alignItems='center'>
           <Typography variant='h6' className={classes.displayLg}>
             Find your destinations
           </Typography>
@@ -35,6 +35,11 @@ const Header = ({ setCoordinates }) => {
                 <InputBase placeholder='Search...' className={classes.searchInput} />
              </div>
           </Autocomplete>
+          {isDark ? 
+            <Box className={classes.sunIcon} onClick={colorMode.toggleColorMode}><LightMode/></Box>
+            : 
+            <Box className={classes.moonIcon} onClick={colorMode.toggleColorMode}><DarkMode/></Box>
+          }
         </Box>
       </Toolbar>
     </AppBar>

@@ -1,4 +1,4 @@
-import { alpha } from "@mui/material";
+import { useMediaQuery, alpha } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 export default makeStyles((theme) => ({
@@ -19,7 +19,7 @@ export default makeStyles((theme) => ({
     paddingLeft: '22%'
   },
   toolbar: {
-    display: 'flex', justifyContent: 'space-between'
+    display: 'flex', justifyContent: 'space-between', alignItems: 'center'
   },
   displayXs: {
     display: 'block',
@@ -33,5 +33,27 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       display: 'block'
     }
+  },
+  moonIcon: {
+    [theme.breakpoints.up('lg')]: { '&:hover': {backgroundColor: 'gray', borderRadius: '5px'} },
+    p: '5px 5px 5px 5px',
+    height: '40px',
+    width: '40px',
+    transition: 'ease-in-out 0.2s',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: '5px'
+  },
+  sunIcon: {
+    [theme.breakpoints.up('lg')]: { '&:hover': {backgroundColor: 'orange', borderRadius: '5px'} },
+    padding: '5px 5px 5px 5px',
+    height: '40px',
+    width: '40px',
+    transition: 'ease-in-out 0.2s',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: '5px'
   }
 }));
