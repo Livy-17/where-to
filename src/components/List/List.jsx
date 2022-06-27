@@ -21,9 +21,6 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
         <Typography variant='h6'>
           Start exploring
         </Typography>
-        <Button size='small' variant='outlined' color='primary'>
-          Open Map
-        </Button> 
       </Box>
       <Typography variant='h5' className={classes.displayLg}>
         Restaurants, Hotels and Attractions around you
