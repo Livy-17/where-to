@@ -25,9 +25,9 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
         <div className={classes.loading}><CircularProgress size='5rem' /></div>
       ) : (
       <Box>
-        <Box m='20px 0 30px 0'>
+        <Box m='20px 0 50px 0'>
           <Grid container>
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={6} mb='10px'>
               <FormControl className={classes.select}>
                 <InputLabel>Type</InputLabel>
                 <Select value={type} onChange={ (e) => setType(e.target.value)} label='Type'>
@@ -50,7 +50,7 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
             </Grid>
           </Grid>
         </Box>
-        <Grid container spacing={3} className={classes.list}>
+        <Grid container spacing={3} className={classes.list} width='85vw'>
           {places?.map((place, i) => (
             <Grid item ref={elemRefs[i]} key={i} xs={12} >
               <Details
