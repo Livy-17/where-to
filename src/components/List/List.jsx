@@ -4,7 +4,7 @@ import useStyles from './styles';
 import Details from '../Details/Details';
 import { useTheme } from '@mui/material';
 
-const List = ({ places, childClicked, isLoading, type, setType, rating, setRating }) => {
+const List = ({ places, childClicked, isLoading, type, setType, rating, setRating, mode }) => {
 
   const classes = useStyles();
   const theme = useTheme();

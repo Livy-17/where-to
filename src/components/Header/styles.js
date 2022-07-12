@@ -56,4 +56,10 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     marginLeft: '5px'
   },
+  bgLight: {
+    backgroundColor: 'white'
+  },
+  bgDark: {
+    backgroundColor: '#272727'
+  }
 }));

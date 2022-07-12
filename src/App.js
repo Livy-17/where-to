@@ -73,6 +73,12 @@ function App() {
     }
   }, [bounds, type]);
 
+  if ( mode === 'light' ) {
+    document.body.style = 'background-color: #f2f2f2;';
+  } else if ( mode === 'dark' ) {
+    document.body.style = 'background-color: #121212;';
+  }
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -95,6 +101,7 @@ function App() {
                   setType={setType}
                   rating={rating}
                   setRating={setRating}
+                  mode={mode}
                 />
               </Grid>
               <Grid item xs={12} lg={8} >
@@ -109,7 +116,7 @@ function App() {
                 />
               </Grid>
             </Grid>
-            <Footer />
+            {/* <Footer /> */}
           </Box>
         </ThemeProvider>
       </ThemeProvider>
