@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
-import Footer from './components/Footer/Footer';
 import { useMediaQuery, createTheme, useTheme, ThemeProvider, Box, CssBaseline, Grid } from "@mui/material";
 import { getPlacesData, getWeatherData } from './api';
 
@@ -116,7 +115,6 @@ function App() {
                 />
               </Grid>
             </Grid>
-            {/* <Footer /> */}
           </Box>
         </ThemeProvider>
       </ThemeProvider>

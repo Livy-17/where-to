@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createRef } from 'react';
-import { Button, Box, CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
+import { Box, CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 import useStyles from './styles';
 import Details from '../Details/Details';
 import { useTheme } from '@mui/material';
@@ -7,7 +7,7 @@ import { useTheme } from '@mui/material';
 const List = ({ places, childClicked, isLoading, type, setType, rating, setRating, mode }) => {
 
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const [ elemRefs, setElemRefs ] = useState([]);
 

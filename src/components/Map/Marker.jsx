@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Rating, Paper, Typography } from '@mui/material';
+import { Rating, Paper, Typography } from '@mui/material';
 import { LocationOnOutlined } from '@mui/icons-material';
 import useStyles from './styles';
 

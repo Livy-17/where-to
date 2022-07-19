@@ -3,7 +3,7 @@ import React from 'react';
 const WeatherMarker = ({ url }) => {
   return ( 
     <div>
-      <img src={url} alt='Weather' />
+      <img src={url} alt='Weather' width='auto' height='auto' />
     </div>
    );
 }
