@@ -4,18 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Where To"
-    />
-    <title>React App</title>
+    <meta name="description" content="Where To" />
+    <title>Where To</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans:wght@100&family=Shadows+Into+Light&display=swap');
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyBFYvv_mH5TFOaKhN8qib1hShFX7xKB4cU"></script>
+    <link rel="icon" type="image/png" href="./app-logo.png" />
+    <link rel="apple-touch-icon" href="./app-logo.png" />
+    <link rel="manifest" href="./manifest.json" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyBFYvv_mH5TFOaKhN8qib1hShFX7xKB4cU"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./serviceWorker.js')
+            .then(reg => console.log('Success: ', reg.scope))
+            .catch(err => console.log('Failure: ', err))
+        })
+      }
+    </script>
   </body>
 </html>
